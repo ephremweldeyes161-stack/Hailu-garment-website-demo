@@ -201,13 +201,79 @@
         .size-btn:hover { border-color: var(--primary); }
         .size-btn.active { background: var(--primary); border-color: var(--primary); }
 
-        .modal-actions { display: flex; gap: 15px; margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
-        .btn-share { width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.1); border: none; color: white; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition-smooth); font-size: 1.2rem; }
+        /* --- NEW MODAL ACTIONS WITH BACK BUTTON --- */
+        .modal-actions { 
+            display: flex; 
+            gap: 15px; 
+            margin-top: auto; 
+            padding-top: 20px; 
+            border-top: 1px solid rgba(255,255,255,0.1); 
+            align-items: center;
+        }
+        .btn-back {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-muted);
+            border-radius: 50px;
+            padding: 12px 20px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+        .btn-back:hover { 
+            background: rgba(255,255,255,0.1); 
+            color: white; 
+            border-color: var(--primary);
+        }
+        .btn-share { 
+            width: 50px; 
+            height: 50px; 
+            border-radius: 50%; 
+            background: rgba(255,255,255,0.1); 
+            border: none; 
+            color: white; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            cursor: pointer; 
+            transition: var(--transition-smooth); 
+            font-size: 1.2rem; 
+            flex-shrink: 0;
+        }
         .btn-share:hover { background: var(--accent); color: black; transform: scale(1.1); }
-        .btn-order { flex: 1; background: var(--primary); color: white; border: none; border-radius: 50px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1rem; cursor: pointer; transition: var(--transition-smooth); display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .btn-order { 
+            flex: 1; 
+            background: var(--primary); 
+            color: white; 
+            border: none; 
+            border-radius: 50px; 
+            font-family: 'Space Grotesk', sans-serif; 
+            font-weight: 700; 
+            font-size: 1rem; 
+            cursor: pointer; 
+            transition: var(--transition-smooth); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 10px; 
+            padding: 12px 20px;
+        }
         .btn-order:hover { background: #1565C0; box-shadow: 0 0 20px rgba(30, 136, 229, 0.5); }
 
-        /* --- LOCATIONS SECTION (CARDS WITH MAPS) --- */
+        /* Mobile adjustments for modal actions */
+        @media (max-width: 480px) {
+            .modal-actions { flex-wrap: wrap; }
+            .btn-back { flex: 1; justify-content: center; }
+            .btn-order { flex: 1 1 100%; }
+        }
+
+        /* --- LOCATIONS SECTION --- */
         .locations-section { background: linear-gradient(to bottom, var(--bg-dark), #061829); padding: 100px 0; }
         .location-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
         
@@ -249,7 +315,7 @@
             overflow: hidden;
             margin-bottom: 20px;
             border: 1px solid rgba(255,255,255,0.1);
-            z-index: 1; /* Ensure map stays below modal */
+            z-index: 1;
         }
 
         .contact-link { color: var(--accent); font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: var(--transition-smooth); font-size: 0.9rem; margin-top: auto; }
@@ -814,7 +880,11 @@
                     <div class="size-options" id="sizeOptions"></div>
                 </div>
 
+                <!-- NEW ACTION BUTTONS WITH BACK -->
                 <div class="modal-actions">
+                    <button class="btn-back" id="backBtn">
+                        <i class="fa-solid fa-arrow-left"></i> Back
+                    </button>
                     <button class="btn-share" id="shareBtn" title="Share this product">
                         <i class="fa-solid fa-share-nodes"></i>
                     </button>
@@ -918,6 +988,7 @@
         const thumbs = document.querySelectorAll('.thumb');
         const orderBtn = document.getElementById('orderBtn');
         const shareBtn = document.getElementById('shareBtn');
+        const backBtn = document.getElementById('backBtn');
 
         productCards.forEach(card => {
             card.addEventListener('click', () => {
@@ -972,6 +1043,13 @@
         });
 
         closeModal.addEventListener('click', () => modal.classList.remove('active'));
+        
+        // --- BACK BUTTON LOGIC (NEW) ---
+        backBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.getElementById('uniforms').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
         modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('active'); });
 
         thumbs.forEach(thumb => {
@@ -1059,15 +1137,12 @@
 
         // --- INTERACTIVE MAPS INSIDE CARDS (LEAFLET.JS) ---
         document.addEventListener('DOMContentLoaded', function() {
-            // Coordinates for the two shops
             const boleMichaelCoords = [8.9936, 38.7860]; 
             const mazoria93Coords = [9.0192, 38.7526];
 
-            // Common Tile Layer (Dark theme)
             const darkTileLayer = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
             const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
 
-            // Custom Gold Marker Icon
             const goldIcon = L.divIcon({
                 className: 'custom-div-icon',
                 html: "<div style='background-color:#D4AF37; width:15px; height:15px; border-radius:50%; border:3px solid #fff; box-shadow: 0 0 10px #D4AF37;'></div>",
@@ -1076,34 +1151,16 @@
             });
 
             // --- MAP 1: BOLE MICHAEL ---
-            const mapBole = L.map('map-bole', {
-                zoomControl: false,
-                scrollWheelZoom: false // Prevents page scroll hijacking
-            }).setView(boleMichaelCoords, 15);
-
+            const mapBole = L.map('map-bole', { zoomControl: false, scrollWheelZoom: false }).setView(boleMichaelCoords, 15);
             L.tileLayer(darkTileLayer, { attribution: attribution, subdomains: 'abcd', maxZoom: 19 }).addTo(mapBole);
-
             L.marker(boleMichaelCoords, {icon: goldIcon}).addTo(mapBole)
-                .bindPopup(`
-                    <b>Bole Michael Branch</b><br>
-                    Main Retail Shop<br>
-                    <a href="https://www.google.com/maps/dir/?api=1&destination=8.9936,38.7860" target="_blank" style="color:#1E88E5; font-weight:bold;">Get Directions</a>
-                `);
+                .bindPopup(`<b>Bole Michael Branch</b><br>Main Retail Shop<br><a href="https://www.google.com/maps/dir/?api=1&destination=8.9936,38.7860" target="_blank" style="color:#1E88E5; font-weight:bold;">Get Directions</a>`);
 
             // --- MAP 2: 93 MAZORIA ---
-            const mapMazoria = L.map('map-mazoria', {
-                zoomControl: false,
-                scrollWheelZoom: false
-            }).setView(mazoria93Coords, 15);
-
+            const mapMazoria = L.map('map-mazoria', { zoomControl: false, scrollWheelZoom: false }).setView(mazoria93Coords, 15);
             L.tileLayer(darkTileLayer, { attribution: attribution, subdomains: 'abcd', maxZoom: 19 }).addTo(mapMazoria);
-
             L.marker(mazoria93Coords, {icon: goldIcon}).addTo(mapMazoria)
-                .bindPopup(`
-                    <b>93 Mazoria Branch</b><br>
-                    Second Retail Shop<br>
-                    <a href="https://www.google.com/maps/dir/?api=1&destination=9.0192,38.7526" target="_blank" style="color:#1E88E5; font-weight:bold;">Get Directions</a>
-                `);
+                .bindPopup(`<b>93 Mazoria Branch</b><br>Second Retail Shop<br><a href="https://www.google.com/maps/dir/?api=1&destination=9.0192,38.7526" target="_blank" style="color:#1E88E5; font-weight:bold;">Get Directions</a>`);
         });
     </script>
 </body>
