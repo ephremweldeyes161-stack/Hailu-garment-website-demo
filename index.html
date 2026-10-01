@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hailu Garment PLC | Premium Uniform Manufacturer</title>
+    <title>Hailu Garment PLC | Premium Uniform Manufacturer Ethiopia</title>
+    <meta name="description" content="Hailu Garment - Leading Ethiopian garment manufacturer with 10+ years experience. Specializing in school uniforms, hospital apparel, security uniforms, and industrial workwear.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,11 +18,12 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     
     <style>
-        /* --- CORE VARIABLES (BLUE, GOLD, WHITE THEME) --- */
+        /* --- CORE VARIABLES --- */
         :root {
             --bg-dark: #0A2540;
             --bg-card: #0F3460;
             --bg-modal: #1a2235;
+            --bg-darker: #061829;
             --primary: #1E88E5;
             --accent: #D4AF37;
             --text-main: #FFFFFF;
@@ -48,7 +50,8 @@
         .section-header { text-align: center; margin-bottom: 70px; }
         .section-header h2 { font-size: 3rem; margin-bottom: 15px; color: white; }
         .section-header h2 span { color: var(--accent); }
-        .section-header p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+        .section-header p { color: var(--text-muted); font-size: 1.1rem; max-width: 700px; margin: 0 auto; }
+        .section-tag { display: inline-block; padding: 6px 18px; background: rgba(30, 136, 229, 0.1); border: 1px solid rgba(30, 136, 229, 0.3); border-radius: 50px; color: #64B5F6; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; margin-bottom: 15px; text-transform: uppercase; }
 
         /* --- FLOATING SOCIAL SIDEBAR --- */
         .social-sidebar { position: fixed; left: 20px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 20px; z-index: 100; }
@@ -83,8 +86,8 @@
         .logo { font-size: 1.8rem; font-weight: 800; color: white; display: flex; align-items: center; gap: 12px; }
         .logo-icon { width: 40px; height: 40px; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
         .logo span { color: var(--accent); }
-        .nav-links { display: flex; gap: 40px; }
-        .nav-links a { font-weight: 500; font-size: 0.95rem; color: var(--text-muted); transition: var(--transition-smooth); position: relative; }
+        .nav-links { display: flex; gap: 35px; }
+        .nav-links a { font-weight: 500; font-size: 0.9rem; color: var(--text-muted); transition: var(--transition-smooth); position: relative; }
         .nav-links a:hover { color: white; }
         .nav-links a::before { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--accent); transition: var(--transition-smooth); }
         .nav-links a:hover::before { width: 100%; }
@@ -133,14 +136,43 @@
         .badge-2 { bottom: 80px; right: -30px; animation-delay: 1.5s; }
         @keyframes floatBadge { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
-        /* --- PARTNERS MARQUEE --- */
-        .partners { padding: 50px 0; background: rgba(0,0,0,0.2); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); overflow: hidden; }
-        .marquee-container { display: flex; overflow: hidden; user-select: none; gap: 60px; mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); }
-        .marquee-content { flex-shrink: 0; display: flex; justify-content: space-around; gap: 60px; min-width: 100%; animation: scroll 30s linear infinite; }
-        .partner-item { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; color: rgba(255,255,255,0.5); display: flex; align-items: center; gap: 12px; transition: var(--transition-smooth); white-space: nowrap; }
-        .partner-item:hover { color: var(--accent); transform: scale(1.05); }
-        .partner-logo-svg { width: 35px; height: 35px; }
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+        /* --- ABOUT SECTION --- */
+        .about-section { background: var(--bg-dark); position: relative; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .about-text p { color: var(--text-muted); margin-bottom: 20px; font-size: 1.05rem; }
+        .about-text p strong { color: var(--white); font-weight: 600; }
+        .about-image { position: relative; border-radius: 20px; overflow: hidden; height: 500px; box-shadow: 0 25px 50px rgba(0,0,0,0.5); }
+        .about-image img { width: 100%; height: 100%; object-fit: cover; }
+        .about-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top right, rgba(10, 37, 64, 0.7), transparent); }
+        
+        .mission-vision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 60px; }
+        .mv-card { background: var(--bg-card); padding: 40px; border-radius: 20px; border-left: 4px solid var(--primary); transition: var(--transition-smooth); }
+        .mv-card:hover { transform: translateY(-5px); border-left-color: var(--accent); }
+        .mv-card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 20px; }
+        .mv-card h3 { margin-bottom: 15px; color: white; }
+        .mv-card p { color: var(--text-muted); }
+
+        /* --- CORE VALUES --- */
+        .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .value-card { background: var(--bg-card); padding: 25px; border-radius: 15px; text-align: center; transition: var(--transition-smooth); border: 1px solid rgba(255,255,255,0.05); }
+        .value-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+        .value-card i { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
+        .value-card h4 { font-size: 0.9rem; color: white; }
+
+        /* --- PRODUCTION CAPACITY --- */
+        .capacity-section { background: var(--bg-darker); }
+        .capacity-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-bottom: 60px; }
+        .cap-stat { text-align: center; padding: 30px 20px; background: var(--bg-card); border-radius: 15px; border-top: 3px solid var(--accent); }
+        .cap-stat h3 { font-size: 3rem; color: var(--accent); margin-bottom: 10px; font-family: 'Space Grotesk', sans-serif; }
+        .cap-stat p { color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .machine-table, .workforce-table { width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: 15px; overflow: hidden; }
+        .machine-table th, .machine-table td, .workforce-table th, .workforce-table td { padding: 20px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .machine-table th, .workforce-table th { background: rgba(30, 136, 229, 0.15); color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; }
+        .machine-table td, .workforce-table td { color: var(--text-main); }
+        .machine-table td:last-child, .workforce-table td:last-child { color: var(--accent); font-weight: 700; }
+        
+        .tables-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
 
         /* --- PRODUCTS SECTION --- */
         .products-section { background: var(--bg-dark); position: relative; }
@@ -167,12 +199,32 @@
         .detail-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
         .detail-value { font-size: 0.9rem; font-weight: 600; color: #e5e7eb; }
 
-        /* --- MODAL (QUICK VIEW) --- */
+        /* --- CLIENTS SECTION --- */
+        .clients-section { background: var(--bg-darker); }
+        .client-category { margin-bottom: 60px; }
+        .client-category h3 { font-size: 1.5rem; color: white; margin-bottom: 25px; display: flex; align-items: center; gap: 15px; }
+        .client-category h3 i { color: var(--accent); font-size: 1.8rem; }
+        .client-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+        .client-card { background: var(--bg-card); padding: 25px; border-radius: 12px; text-align: center; transition: var(--transition-smooth); border: 1px solid rgba(255,255,255,0.05); }
+        .client-card:hover { transform: translateY(-5px); border-color: var(--accent); background: rgba(212, 175, 55, 0.05); }
+        .client-card i { font-size: 1.8rem; color: var(--primary); margin-bottom: 12px; }
+        .client-card h4 { font-size: 1rem; color: white; }
+        .client-card p { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
+
+        /* --- WHY CHOOSE US --- */
+        .why-section { background: var(--bg-dark); }
+        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .why-card { background: var(--bg-card); padding: 30px; border-radius: 15px; display: flex; gap: 20px; align-items: flex-start; transition: var(--transition-smooth); border: 1px solid rgba(255,255,255,0.05); }
+        .why-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .why-card .why-icon { flex-shrink: 0; width: 50px; height: 50px; background: rgba(30, 136, 229, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--accent); }
+        .why-card h4 { font-size: 1rem; color: white; margin-bottom: 8px; }
+        .why-card p { font-size: 0.9rem; color: var(--text-muted); }
+
+        /* --- MODAL --- */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); z-index: 2000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: var(--transition-smooth); padding: 20px; }
         .modal-overlay.active { opacity: 1; pointer-events: auto; }
         .modal-content { background: var(--bg-modal); width: 100%; max-width: 1000px; border-radius: 20px; overflow: hidden; display: flex; transform: scale(0.9) translateY(20px); transition: var(--transition-smooth); border: 1px solid rgba(255,255,255,0.1); max-height: 90vh; }
         .modal-overlay.active .modal-content { transform: scale(1) translateY(0); }
-
         .modal-left { flex: 1; background: #0A2540; position: relative; display: flex; flex-direction: column; }
         .main-image { flex: 1; display: flex; align-items: center; justify-content: center; overflow: hidden; }
         .main-image img { width: 100%; height: 100%; object-fit: cover; }
@@ -180,14 +232,12 @@
         .thumb { width: 60px; height: 60px; border-radius: 8px; overflow: hidden; cursor: pointer; border: 2px solid transparent; transition: var(--transition-smooth); }
         .thumb.active { border-color: var(--accent); }
         .thumb img { width: 100%; height: 100%; object-fit: cover; }
-
         .modal-right { flex: 1; padding: 40px; overflow-y: auto; display: flex; flex-direction: column; }
         .modal-close { position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.1); border: none; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition-smooth); font-size: 1.2rem; }
         .modal-close:hover { background: #ef4444; transform: rotate(90deg); }
         .modal-category { color: var(--primary); font-size: 0.8rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
         .modal-title { font-size: 2.2rem; margin-bottom: 15px; color: white; }
         .modal-desc { color: var(--text-muted); margin-bottom: 30px; font-size: 1rem; }
-
         .selector-group { margin-bottom: 25px; }
         .selector-label { font-size: 0.85rem; font-weight: 600; color: var(--text-main); margin-bottom: 10px; display: block; text-transform: uppercase; letter-spacing: 1px; }
         .color-options { display: flex; gap: 12px; }
@@ -195,149 +245,51 @@
         .color-swatch:hover { transform: scale(1.1); }
         .color-swatch.active { border-color: white; transform: scale(1.1); }
         .color-swatch.active::after { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 0.8rem; text-shadow: 0 0 5px rgba(0,0,0,0.5); }
-
         .size-options { display: flex; gap: 10px; flex-wrap: wrap; }
         .size-btn { padding: 8px 20px; border: 1px solid rgba(255,255,255,0.2); background: transparent; color: white; border-radius: 8px; cursor: pointer; font-family: 'Space Grotesk', sans-serif; transition: var(--transition-smooth); font-weight: 600; }
         .size-btn:hover { border-color: var(--primary); }
         .size-btn.active { background: var(--primary); border-color: var(--primary); }
-
-        /* --- NEW MODAL ACTIONS WITH BACK BUTTON --- */
-        .modal-actions { 
-            display: flex; 
-            gap: 15px; 
-            margin-top: auto; 
-            padding-top: 20px; 
-            border-top: 1px solid rgba(255,255,255,0.1); 
-            align-items: center;
-        }
-        .btn-back {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: var(--text-muted);
-            border-radius: 50px;
-            padding: 12px 20px;
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 600;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            white-space: nowrap;
-        }
-        .btn-back:hover { 
-            background: rgba(255,255,255,0.1); 
-            color: white; 
-            border-color: var(--primary);
-        }
-        .btn-share { 
-            width: 50px; 
-            height: 50px; 
-            border-radius: 50%; 
-            background: rgba(255,255,255,0.1); 
-            border: none; 
-            color: white; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            cursor: pointer; 
-            transition: var(--transition-smooth); 
-            font-size: 1.2rem; 
-            flex-shrink: 0;
-        }
+        .modal-actions { display: flex; gap: 15px; margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); align-items: center; }
+        .btn-back { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: var(--text-muted); border-radius: 50px; padding: 12px 20px; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth); display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+        .btn-back:hover { background: rgba(255,255,255,0.1); color: white; border-color: var(--primary); }
+        .btn-share { width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.1); border: none; color: white; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition-smooth); font-size: 1.2rem; flex-shrink: 0; }
         .btn-share:hover { background: var(--accent); color: black; transform: scale(1.1); }
-        .btn-order { 
-            flex: 1; 
-            background: var(--primary); 
-            color: white; 
-            border: none; 
-            border-radius: 50px; 
-            font-family: 'Space Grotesk', sans-serif; 
-            font-weight: 700; 
-            font-size: 1rem; 
-            cursor: pointer; 
-            transition: var(--transition-smooth); 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            gap: 10px; 
-            padding: 12px 20px;
-        }
+        .btn-order { flex: 1; background: var(--primary); color: white; border: none; border-radius: 50px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1rem; cursor: pointer; transition: var(--transition-smooth); display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 20px; }
         .btn-order:hover { background: #1565C0; box-shadow: 0 0 20px rgba(30, 136, 229, 0.5); }
-
-        /* Mobile adjustments for modal actions */
-        @media (max-width: 480px) {
-            .modal-actions { flex-wrap: wrap; }
-            .btn-back { flex: 1; justify-content: center; }
-            .btn-order { flex: 1 1 100%; }
-        }
 
         /* --- LOCATIONS SECTION --- */
         .locations-section { background: linear-gradient(to bottom, var(--bg-dark), #061829); padding: 100px 0; }
         .location-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
-        
-        .location-card { 
-            background: rgba(255,255,255,0.02); 
-            border: 1px solid rgba(255,255,255,0.05); 
-            border-radius: 20px; 
-            padding: 30px; 
-            transition: var(--transition-smooth); 
-            position: relative; 
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
+        .location-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 30px; transition: var(--transition-smooth); position: relative; overflow: hidden; display: flex; flex-direction: column; }
         .location-card:hover { background: rgba(255,255,255,0.05); transform: translateY(-5px); border-color: rgba(30, 136, 229, 0.3); }
-        
-        .location-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        .location-icon-small {
-            width: 50px; height: 50px;
-            background: rgba(30, 136, 229, 0.1);
-            border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem; color: var(--primary);
-        }
+        .location-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .location-icon-small { width: 50px; height: 50px; background: rgba(30, 136, 229, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--primary); }
         .location-header h3 { font-size: 1.3rem; color: white; margin: 0; }
-        
         .location-info { margin-bottom: 20px; }
         .location-info p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 5px; }
-        
-        .location-map-container {
-            width: 100%;
-            height: 200px;
-            border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 20px;
-            border: 1px solid rgba(255,255,255,0.1);
-            z-index: 1;
-        }
-
+        .location-map-container { width: 100%; height: 200px; border-radius: 12px; overflow: hidden; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.1); z-index: 1; }
         .contact-link { color: var(--accent); font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: var(--transition-smooth); font-size: 0.9rem; margin-top: auto; }
         .contact-link:hover { gap: 12px; }
-
         .leaflet-popup-content-wrapper { background: var(--bg-card); color: white; border-radius: 10px; }
         .leaflet-popup-tip { background: var(--bg-card); }
         .leaflet-popup-content b { color: var(--accent); }
 
         /* --- FOOTER --- */
-        footer { background: #040F1A; padding: 50px 0 30px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; }
-        .footer-logo { font-size: 2rem; font-weight: 800; color: white; margin-bottom: 20px; display: inline-block; }
+        footer { background: #040F1A; padding: 60px 0 30px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-col h4 { font-size: 1rem; color: white; margin-bottom: 20px; }
+        .footer-col p, .footer-col a { color: var(--text-muted); font-size: 0.9rem; display: block; margin-bottom: 10px; transition: var(--transition-smooth); }
+        .footer-col a:hover { color: var(--accent); }
+        .footer-logo { font-size: 1.8rem; font-weight: 800; color: white; margin-bottom: 20px; display: block; }
         .footer-logo span { color: var(--accent); }
-        footer p { color: var(--text-muted); font-size: 0.9rem; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); color: var(--text-muted); font-size: 0.85rem; }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 1024px) {
-            .hero-container { grid-template-columns: 1fr; text-align: center; }
+            .hero-container, .about-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 3rem; }
             .hero p { margin: 0 auto 40px; }
-            .hero-btns { justify-content: center; }
-            .hero-stats { justify-content: center; }
+            .hero-btns, .hero-stats { justify-content: center; }
             .hero-visual { height: 450px; margin-top: 40px; }
             .card-stack { width: 260px; height: 340px; }
             .social-sidebar { display: none; }
@@ -346,6 +298,9 @@
             .modal-right { padding: 25px; }
             .floating-badge { display: none; }
             .ai-chat-window { width: 90%; right: 5%; }
+            .tables-container { grid-template-columns: 1fr; }
+            .mission-vision-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
@@ -356,6 +311,10 @@
             .cursor-dot, .cursor-outline { display: none; }
             * { cursor: auto; }
             .location-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .modal-actions { flex-wrap: wrap; }
+            .btn-back { flex: 1; justify-content: center; }
+            .btn-order { flex: 1 1 100%; }
         }
     </style>
 </head>
@@ -375,17 +334,11 @@
     </div>
 
     <!-- AI CHATBOT -->
-    <div class="ai-chatbot-btn" id="aiChatBtn">
-        <i class="fa-solid fa-robot"></i>
-    </div>
-
+    <div class="ai-chatbot-btn" id="aiChatBtn"><i class="fa-solid fa-robot"></i></div>
     <div class="ai-chat-window" id="aiChatWindow">
         <div class="ai-chat-header">
             <i class="fa-solid fa-robot"></i>
-            <div>
-                <h4>Hailu AI Assistant</h4>
-                <span>Online • Ready to help</span>
-            </div>
+            <div><h4>Hailu AI Assistant</h4><span>Online • Ready to help</span></div>
             <button class="modal-close" id="closeChat" style="position:static; width:30px; height:30px; font-size:1rem;"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <div class="ai-chat-body" id="aiChatBody">
@@ -406,9 +359,10 @@
                     HAILU<span>GARMENT</span>
                 </a>
                 <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#capacity">Capacity</a></li>
                     <li><a href="#uniforms">Uniforms</a></li>
-                    <li><a href="#partners">Partners</a></li>
+                    <li><a href="#clients">Clients</a></li>
                     <li><a href="#contact">Locations</a></li>
                 </ul>
                 <a href="#contact" class="btn btn-primary">Get a Quote</a>
@@ -421,86 +375,122 @@
         <div class="container">
             <div class="hero-container">
                 <div class="hero-content">
-                    <div class="hero-badge">EST. 2015 • ADDIS ABABA</div>
-                    <h1>Dress Your Students in <span>Excellence</span></h1>
-                    <p>Ethiopia's leading garment manufacturer. We combine high-quality fabrics with precision tailoring to serve top educational institutions and industrial sectors.</p>
+                    <div class="hero-badge">OVER 10 YEARS OF MANUFACTURING EXCELLENCE</div>
+                    <h1>Ethiopian Excellence in <span>Garment Manufacturing</span></h1>
+                    <p>Uniforms • Workwear • Institutional Apparel • Custom Manufacturing. Trusted by Ethiopia's leading hospitals, schools, security firms, and corporations.</p>
                     <div class="hero-btns">
                         <a href="#uniforms" class="btn btn-primary">Explore Collection</a>
                         <a href="#contact" class="btn btn-outline">Visit Our Shops</a>
                     </div>
-                    
                     <div class="hero-stats">
-                        <div class="stat-item"><h3>50+</h3><p>Schools Served</p></div>
-                        <div class="stat-item"><h3>10K+</h3><p>Uniforms Made</p></div>
-                        <div class="stat-item"><h3>100%</h3><p>Quality Guarantee</p></div>
+                        <div class="stat-item"><h3>10+</h3><p>Years Experience</p></div>
+                        <div class="stat-item"><h3>35</h3><p>Industrial Machines</p></div>
+                        <div class="stat-item"><h3>35</h3><p>Skilled Workforce</p></div>
                     </div>
                 </div>
 
                 <div class="hero-visual" id="heroVisual">
-                    <div class="floating-badge badge-1">
-                        <i class="fa-solid fa-award"></i>
-                        <div class="badge-text"><strong>Premium Quality</strong><span>Durable Fabrics</span></div>
-                    </div>
-                    <div class="floating-badge badge-2">
-                        <i class="fa-solid fa-truck-fast"></i>
-                        <div class="badge-text"><strong>Bulk Orders</strong><span>Fast Delivery</span></div>
-                    </div>
+                    <div class="floating-badge badge-1"><i class="fa-solid fa-award"></i><div class="badge-text"><strong>Premium Quality</strong><span>Durable Fabrics</span></div></div>
+                    <div class="floating-badge badge-2"><i class="fa-solid fa-truck-fast"></i><div class="badge-text"><strong>On-Time Delivery</strong><span>Reliable Production</span></div></div>
 
                     <div class="card-stack" id="cardStack">
-                        <div class="kid-card">
-                            <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Student in uniform">
-                            <div class="card-overlay"><h4>Kale Hiwot Academy</h4><span>Grey Vest Collection</span></div>
-                        </div>
-                        <div class="kid-card">
-                            <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Student in uniform">
-                            <div class="card-overlay"><h4>School of Igoda</h4><span>Navy Sweater Series</span></div>
-                        </div>
-                        <div class="kid-card">
-                            <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Student in uniform">
-                            <div class="card-overlay"><h4>Ethio Shipping Academy</h4><span>Maroon V-Neck Edition</span></div>
-                        </div>
+                        <div class="kid-card"><img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Student"><div class="card-overlay"><h4>Bole Kale Hiwot School</h4><span>Grey Vest Collection</span></div></div>
+                        <div class="kid-card"><img src="https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Student"><div class="card-overlay"><h4>Aygoda School</h4><span>Navy Sweater Series</span></div></div>
+                        <div class="kid-card"><img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Student"><div class="card-overlay"><h4>Future Talent School</h4><span>Maroon V-Neck Edition</span></div></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PARTNERS MARQUEE -->
-    <section class="partners" id="partners">
-        <div class="marquee-container">
-            <div class="marquee-content">
-                <div class="partner-item">
-                    <svg class="partner-logo-svg" viewBox="0 0 100 100"><path d="M20 40 L50 30 L80 40" stroke="#D4AF37" stroke-width="5" fill="none"/><path d="M30 45 L50 40 L70 45" stroke="#D4AF37" stroke-width="3" fill="none"/><circle cx="50" cy="65" r="10" fill="#1E88E5" /></svg>
-                    Kale Hiwot Academy
-                </div>
-                <div class="partner-item">
-                    <svg class="partner-logo-svg" viewBox="0 0 100 100"><path d="M20 70 L50 30 L80 70" stroke="#1E88E5" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M30 60 L50 40 L70 60" stroke="#D4AF37" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
-                    Ethiopian Shipping
-                </div>
-                <div class="partner-item">
-                    <svg class="partner-logo-svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="#D4AF37" /><path d="M30 40 Q50 20 70 40" stroke="#0A2540" stroke-width="4" fill="none" /><text x="50" y="65" font-family="Arial" font-weight="bold" font-size="20" fill="#0A2540" text-anchor="middle">CBE</text></svg>
-                    Commercial Bank of Ethiopia
-                </div>
-                <div class="partner-item"><i class="fa-solid fa-school"></i> School of Igoda</div>
-                <div class="partner-item"><i class="fa-solid fa-globe"></i> Foreign Agents</div>
-                <div class="partner-item"><i class="fa-solid fa-helmet-safety"></i> Construction Firms</div>
+    <!-- ABOUT SECTION -->
+    <section class="about-section section-padding" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Who We Are</span>
+                <h2>About <span>Hailu Garment</span></h2>
             </div>
-            <div class="marquee-content">
-                <div class="partner-item">
-                    <svg class="partner-logo-svg" viewBox="0 0 100 100"><path d="M20 40 L50 30 L80 40" stroke="#D4AF37" stroke-width="5" fill="none"/><path d="M30 45 L50 40 L70 45" stroke="#D4AF37" stroke-width="3" fill="none"/><circle cx="50" cy="65" r="10" fill="#1E88E5" /></svg>
-                    Kale Hiwot Academy
+            <div class="about-grid">
+                <div class="about-text">
+                    <p><strong>Hailu Garment</strong> is a leading Ethiopian garment manufacturing company with over <strong>10 years of experience</strong> in the apparel industry. We specialize in designing, manufacturing, and supplying high-quality uniforms, workwear, school uniforms, hospital apparel, security uniforms, and customized textile products.</p>
+                    <p>Through a strong commitment to quality, professionalism, and timely delivery, Hailu Garment has built a solid reputation as a reliable manufacturing partner for many of Ethiopia's most respected institutions.</p>
+                    <p>We provide <strong>complete garment manufacturing solutions</strong>, covering the entire production process — from consultation and design to manufacturing, quality control, and delivery.</p>
                 </div>
-                <div class="partner-item">
-                    <svg class="partner-logo-svg" viewBox="0 0 100 100"><path d="M20 70 L50 30 L80 70" stroke="#1E88E5" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M30 60 L50 40 L70 60" stroke="#D4AF37" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
-                    Ethiopian Shipping
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hailu Garment Workshop">
                 </div>
-                <div class="partner-item">
-                    <svg class="partner-logo-svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="#D4AF37" /><path d="M30 40 Q50 20 70 40" stroke="#0A2540" stroke-width="4" fill="none" /><text x="50" y="65" font-family="Arial" font-weight="bold" font-size="20" fill="#0A2540" text-anchor="middle">CBE</text></svg>
-                    Commercial Bank of Ethiopia
+            </div>
+            
+            <div class="mission-vision-grid">
+                <div class="mv-card">
+                    <i class="fa-solid fa-bullseye"></i>
+                    <h3>Our Mission</h3>
+                    <p>To manufacture and deliver high-quality, durable, and affordable garments that meet the unique needs of our customers while maintaining excellence in craftsmanship, innovation, and customer satisfaction.</p>
                 </div>
-                <div class="partner-item"><i class="fa-solid fa-school"></i> School of Igoda</div>
-                <div class="partner-item"><i class="fa-solid fa-globe"></i> Foreign Agents</div>
-                <div class="partner-item"><i class="fa-solid fa-helmet-safety"></i> Construction Firms</div>
+                <div class="mv-card">
+                    <i class="fa-solid fa-eye"></i>
+                    <h3>Our Vision</h3>
+                    <p>To become one of Ethiopia's most trusted and innovative garment manufacturers, recognized for quality, reliability, and sustainable growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE VALUES -->
+    <section class="section-padding" style="background: var(--bg-darker);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">What Drives Us</span>
+                <h2>Our Core <span>Values</span></h2>
+            </div>
+            <div class="values-grid">
+                <div class="value-card"><i class="fa-solid fa-medal"></i><h4>Quality Excellence</h4></div>
+                <div class="value-card"><i class="fa-solid fa-handshake"></i><h4>Customer Satisfaction</h4></div>
+                <div class="value-card"><i class="fa-solid fa-shield-halved"></i><h4>Integrity</h4></div>
+                <div class="value-card"><i class="fa-solid fa-user-tie"></i><h4>Professionalism</h4></div>
+                <div class="value-card"><i class="fa-solid fa-lightbulb"></i><h4>Innovation</h4></div>
+                <div class="value-card"><i class="fa-solid fa-users"></i><h4>Teamwork</h4></div>
+                <div class="value-card"><i class="fa-solid fa-clock"></i><h4>Timely Delivery</h4></div>
+                <div class="value-card"><i class="fa-solid fa-chart-line"></i><h4>Continuous Improvement</h4></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTION CAPACITY -->
+    <section class="capacity-section section-padding" id="capacity">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Infrastructure</span>
+                <h2>Production <span>Capacity</span></h2>
+                <p>Hailu Garment operates a modern production workshop equipped with 35 industrial sewing machines, enabling efficient production while maintaining high quality standards.</p>
+            </div>
+            
+            <div class="capacity-stats">
+                <div class="cap-stat"><h3>35</h3><p>Total Machines</p></div>
+                <div class="cap-stat"><h3>15</h3><p>Permanent Employees</p></div>
+                <div class="cap-stat"><h3>20</h3><p>Contract Employees</p></div>
+                <div class="cap-stat"><h3>35</h3><p>Total Workforce</p></div>
+            </div>
+
+            <div class="tables-container">
+                <table class="machine-table">
+                    <thead><tr><th>Machine Type</th><th>Quantity</th></tr></thead>
+                    <tbody>
+                        <tr><td>Single Needle Machines</td><td>25</td></tr>
+                        <tr><td>Overlock Machines</td><td>4</td></tr>
+                        <tr><td>Interlock Machines</td><td>2</td></tr>
+                        <tr><td>Buttonhole & Button Sewing Machines</td><td>4</td></tr>
+                        <tr><td><strong>Total Industrial Machines</strong></td><td><strong>35</strong></td></tr>
+                    </tbody>
+                </table>
+                <table class="workforce-table">
+                    <thead><tr><th>Workforce Category</th><th>Count</th></tr></thead>
+                    <tbody>
+                        <tr><td>Permanent Employees</td><td>15</td></tr>
+                        <tr><td>Contract Employees</td><td>20</td></tr>
+                        <tr><td><strong>Total Workforce</strong></td><td><strong>35</strong></td></tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
@@ -509,6 +499,7 @@
     <section class="products-section section-padding" id="uniforms">
         <div class="container">
             <div class="section-header">
+                <span class="section-tag">Our Products & Services</span>
                 <h2>Our <span>Collection</span></h2>
                 <p>Click on any product to view detailed specifications, sizes, and colors.</p>
             </div>
@@ -523,8 +514,8 @@
                 
                 <!-- 1. CBE Corporate Uniform -->
                 <div class="product-card" data-category="industry" 
-                     data-title="CBE Corporate Uniform"
-                     data-desc="Official corporate uniform designed for Commercial Bank of Ethiopia staff. Features a premium poly-wool blend for a sharp, professional look. Includes the iconic CBE gold and navy color scheme."
+                     data-title="Corporate Uniform"
+                     data-desc="Official corporate uniform designed for banks and corporate institutions like the Commercial Bank of Ethiopia. Features a premium poly-wool blend for a sharp, professional look."
                      data-school="Commercial Bank of Ethiopia"
                      data-material="Poly-Wool Blend"
                      data-sizes="S,M,L,XL,XXL"
@@ -538,7 +529,7 @@
                     </div>
                     <div class="card-content">
                         <span class="card-category">Corporate Uniform</span>
-                        <h3 class="card-title">CBE Corporate Uniform</h3>
+                        <h3 class="card-title">Corporate Uniform</h3>
                         <div class="card-details">
                             <div class="detail"><span class="detail-label">Client</span><span class="detail-value">CBE</span></div>
                             <div class="detail"><span class="detail-label">Material</span><span class="detail-value">Poly-Wool</span></div>
@@ -549,9 +540,9 @@
 
                 <!-- 2. School Uniform - Grey Vest -->
                 <div class="product-card" data-category="school" 
-                     data-title="Classic Grey Vest"
-                     data-desc="Our premium grey vest is crafted from a breathable cotton-blend fabric, perfect for daily school wear. It features reinforced stitching at the shoulders and a comfortable V-neck design."
-                     data-school="Kale Hiwot"
+                     data-title="Classic School Vest"
+                     data-desc="Our premium school vest is crafted from a breathable cotton-blend fabric, perfect for daily school wear. It features reinforced stitching at the shoulders and a comfortable V-neck design."
+                     data-school="Bole Kale Hiwot"
                      data-material="Cotton Blend"
                      data-sizes="S,M,L,XL"
                      data-colors="#6b7280,#0A2540,#991b1b"
@@ -564,7 +555,7 @@
                     </div>
                     <div class="card-content">
                         <span class="card-category">School Uniform</span>
-                        <h3 class="card-title">Classic Grey Vest</h3>
+                        <h3 class="card-title">Classic School Vest</h3>
                         <div class="card-details">
                             <div class="detail"><span class="detail-label">School</span><span class="detail-value">Kale Hiwot</span></div>
                             <div class="detail"><span class="detail-label">Material</span><span class="detail-value">Cotton Blend</span></div>
@@ -576,22 +567,20 @@
                 <!-- 3. School Uniform - Navy Sweater -->
                 <div class="product-card" data-category="school"
                      data-title="Navy Blue Sweater"
-                     data-desc="A warm and durable navy sweater designed for cooler school days. Made from a soft wool-mix that retains shape after multiple washes. Available in standard school colors."
-                     data-school="School of Igoda"
+                     data-desc="A warm and durable navy sweater designed for cooler school days. Made from a soft wool-mix that retains shape after multiple washes."
+                     data-school="Aygoda School"
                      data-material="Wool Mix"
                      data-sizes="S,M,L"
                      data-colors="#0A2540,#000000,#4b5563"
                      data-img1="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                      data-img2="https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                      data-img3="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Navy Sweater">
-                    </div>
+                    <div class="card-image"><img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Navy Sweater"></div>
                     <div class="card-content">
                         <span class="card-category">School Uniform</span>
                         <h3 class="card-title">Navy Blue Sweater</h3>
                         <div class="card-details">
-                            <div class="detail"><span class="detail-label">School</span><span class="detail-value">School of Igoda</span></div>
+                            <div class="detail"><span class="detail-label">School</span><span class="detail-value">Aygoda</span></div>
                             <div class="detail"><span class="detail-label">Material</span><span class="detail-value">Wool Mix</span></div>
                             <div class="detail"><span class="detail-label">Sizes</span><span class="detail-value">S - L</span></div>
                         </div>
@@ -602,21 +591,19 @@
                 <div class="product-card" data-category="school"
                      data-title="Maroon V-Neck Vest"
                      data-desc="Elegant maroon V-neck vest with a smooth acrylic finish. Ideal for formal school assemblies and daily wear. Resistant to pilling and fading."
-                     data-school="Ethio Shipping"
+                     data-school="Future Talent School"
                      data-material="Acrylic"
                      data-sizes="M,L,XL"
                      data-colors="#991b1b,#0A2540,#6b7280"
                      data-img1="https://images.unsplash.com/photo-1604695573706-53170668f6a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                      data-img2="https://images.unsplash.com/photo-1574170208205-6c13e78d1b71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                      data-img3="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1604695573706-53170668f6a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Maroon V-Neck">
-                    </div>
+                    <div class="card-image"><img src="https://images.unsplash.com/photo-1604695573706-53170668f6a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Maroon V-Neck"></div>
                     <div class="card-content">
                         <span class="card-category">School Uniform</span>
                         <h3 class="card-title">Maroon V-Neck Vest</h3>
                         <div class="card-details">
-                            <div class="detail"><span class="detail-label">School</span><span class="detail-value">Ethio Shipping</span></div>
+                            <div class="detail"><span class="detail-label">School</span><span class="detail-value">Future Talent</span></div>
                             <div class="detail"><span class="detail-label">Material</span><span class="detail-value">Acrylic</span></div>
                             <div class="detail"><span class="detail-label">Sizes</span><span class="detail-value">M - XL</span></div>
                         </div>
@@ -627,21 +614,19 @@
                 <div class="product-card" data-category="school"
                      data-title="Mustard Cardigan"
                      data-desc="A stylish mustard cardigan made from premium cotton. Features a button-up front and ribbed cuffs. Perfect for a smart-casual school look."
-                     data-school="Foreign Agents"
+                     data-school="Bright Future School"
                      data-material="Premium Cotton"
                      data-sizes="Custom"
                      data-colors="#D4AF37,#0A2540,#991b1b"
                      data-img1="https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                      data-img2="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                      data-img3="https://images.unsplash.com/photo-1574170208205-6c13e78d1b71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mustard Cardigan">
-                    </div>
+                    <div class="card-image"><img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mustard Cardigan"></div>
                     <div class="card-content">
                         <span class="card-category">School Uniform</span>
                         <h3 class="card-title">Mustard Cardigan</h3>
                         <div class="card-details">
-                            <div class="detail"><span class="detail-label">School</span><span class="detail-value">Foreign Agents</span></div>
+                            <div class="detail"><span class="detail-label">School</span><span class="detail-value">Bright Future</span></div>
                             <div class="detail"><span class="detail-label">Material</span><span class="detail-value">Premium Cotton</span></div>
                             <div class="detail"><span class="detail-label">Sizes</span><span class="detail-value">Custom</span></div>
                         </div>
@@ -659,9 +644,7 @@
                      data-img1="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                      data-img2="https://images.unsplash.com/photo-1574170208205-6c13e78d1b71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                      data-img3="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="White Shirt">
-                    </div>
+                    <div class="card-image"><img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="White Shirt"></div>
                     <div class="card-content">
                         <span class="card-category">School Uniform</span>
                         <h3 class="card-title">White Collared Shirt</h3>
@@ -676,8 +659,8 @@
                 <!-- 7. INDUSTRIAL - Nurse Uniform -->
                 <div class="product-card" data-category="industry"
                      data-title="Nurse Medical Scrubs"
-                     data-desc="Antimicrobial medical scrubs set (top and pants) designed for nurses and healthcare professionals. Made from a soft, 4-way stretch fabric for comfort during long shifts."
-                     data-school="Healthcare"
+                     data-desc="Antimicrobial medical scrubs set (top and pants) designed for hospitals like Zewditu Hospital. Made from a soft, 4-way stretch fabric for comfort during long shifts."
+                     data-school="Zewditu Hospital"
                      data-material="Antimicrobial Poly-Cotton"
                      data-sizes="XS,S,M,L,XL,XXL"
                      data-colors="#1E88E5,#10b981,#ffffff"
@@ -692,7 +675,7 @@
                         <span class="card-category">Industrial Uniform</span>
                         <h3 class="card-title">Nurse Medical Scrubs</h3>
                         <div class="card-details">
-                            <div class="detail"><span class="detail-label">Industry</span><span class="detail-value">Healthcare</span></div>
+                            <div class="detail"><span class="detail-label">Client</span><span class="detail-value">Zewditu Hospital</span></div>
                             <div class="detail"><span class="detail-label">Material</span><span class="detail-value">Antimicrobial</span></div>
                             <div class="detail"><span class="detail-label">Sizes</span><span class="detail-value">XS - XXL</span></div>
                         </div>
@@ -702,8 +685,8 @@
                 <!-- 8. INDUSTRIAL - Hotel Staff Uniform -->
                 <div class="product-card" data-category="industry"
                      data-title="Hotel Staff Uniform"
-                     data-desc="Elegant hotel staff uniform including a tailored blazer and vest. Perfect for front desk, concierge, and management. Made from a premium poly-wool blend for a sharp, professional look."
-                     data-school="Hospitality"
+                     data-desc="Elegant hotel staff uniform designed for luxury spas and hotels like Boston Spa. Includes a tailored blazer and vest. Made from a premium poly-wool blend."
+                     data-school="Boston Spa"
                      data-material="Poly-Wool Blend"
                      data-sizes="S,M,L,XL"
                      data-colors="#0A2540,#D4AF37,#000000"
@@ -718,7 +701,7 @@
                         <span class="card-category">Industrial Uniform</span>
                         <h3 class="card-title">Hotel Staff Uniform</h3>
                         <div class="card-details">
-                            <div class="detail"><span class="detail-label">Industry</span><span class="detail-value">Hospitality</span></div>
+                            <div class="detail"><span class="detail-label">Client</span><span class="detail-value">Boston Spa</span></div>
                             <div class="detail"><span class="detail-label">Material</span><span class="detail-value">Poly-Wool</span></div>
                             <div class="detail"><span class="detail-label">Sizes</span><span class="detail-value">S - XL</span></div>
                         </div>
@@ -728,8 +711,8 @@
                 <!-- 9. INDUSTRIAL - Security Guard Uniform -->
                 <div class="product-card" data-category="industry"
                      data-title="Security Guard Uniform"
-                     data-desc="Professional security guard uniform including a tactical shirt and trousers. Features reinforced stitching and a durable poly-cotton blend. Ideal for security firms and event management."
-                     data-school="Security"
+                     data-desc="Professional security guard uniform designed for Maraki Security Service. Includes a tactical shirt and trousers with reinforced stitching and a durable poly-cotton blend."
+                     data-school="Maraki Security"
                      data-material="Poly-Cotton"
                      data-sizes="M,L,XL,XXL"
                      data-colors="#0A2540,#000000,#4b5563"
@@ -744,7 +727,7 @@
                         <span class="card-category">Industrial Uniform</span>
                         <h3 class="card-title">Security Guard Uniform</h3>
                         <div class="card-details">
-                            <div class="detail"><span class="detail-label">Industry</span><span class="detail-value">Security</span></div>
+                            <div class="detail"><span class="detail-label">Client</span><span class="detail-value">Maraki Security</span></div>
                             <div class="detail"><span class="detail-label">Material</span><span class="detail-value">Poly-Cotton</span></div>
                             <div class="detail"><span class="detail-label">Sizes</span><span class="detail-value">M - XXL</span></div>
                         </div>
@@ -754,8 +737,8 @@
                 <!-- 10. INDUSTRIAL - Waitress Uniform -->
                 <div class="product-card" data-category="industry"
                      data-title="Waitress Uniform"
-                     data-desc="Stylish and comfortable waitress uniform. Features a crisp white shirt with a tailored apron and vest. Made from easy-care, stain-resistant fabric. Perfect for restaurants and cafes."
-                     data-school="Restaurant"
+                     data-desc="Stylish and comfortable waitress uniform. Features a crisp white shirt with a tailored apron and vest. Made from easy-care, stain-resistant fabric."
+                     data-school="Restaurants & Cafes"
                      data-material="Easy-Care Poly-Cotton"
                      data-sizes="XS,S,M,L"
                      data-colors="#ffffff,#000000,#D4AF37"
@@ -781,60 +764,149 @@
         </div>
     </section>
 
-    <!-- LOCATIONS SECTION (MAPS INSIDE CARDS) -->
+    <!-- CLIENTS SECTION -->
+    <section class="clients-section section-padding" id="clients">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Trusted By</span>
+                <h2>Our <span>Clients</span></h2>
+                <p>Hailu Garment has successfully supplied garments to a diverse range of organizations across Ethiopia.</p>
+            </div>
+
+            <!-- Healthcare -->
+            <div class="client-category">
+                <h3><i class="fa-solid fa-hospital"></i> Healthcare</h3>
+                <div class="client-grid">
+                    <div class="client-card"><i class="fa-solid fa-hospital-user"></i><h4>Zewditu Hospital</h4><p>Hospital Uniforms</p></div>
+                </div>
+            </div>
+
+            <!-- Transportation -->
+            <div class="client-category">
+                <h3><i class="fa-solid fa-bus"></i> Transportation</h3>
+                <div class="client-grid">
+                    <div class="client-card"><i class="fa-solid fa-bus-simple"></i><h4>Bahir Transport</h4><p>Transport Staff Uniforms</p></div>
+                </div>
+            </div>
+
+            <!-- Hospitality -->
+            <div class="client-category">
+                <h3><i class="fa-solid fa-spa"></i> Hospitality</h3>
+                <div class="client-grid">
+                    <div class="client-card"><i class="fa-solid fa-spa"></i><h4>Boston Spa</h4><p>Spa Staff Uniforms</p></div>
+                </div>
+            </div>
+
+            <!-- Security -->
+            <div class="client-category">
+                <h3><i class="fa-solid fa-shield-halved"></i> Security Services</h3>
+                <div class="client-grid">
+                    <div class="client-card"><i class="fa-solid fa-user-shield"></i><h4>Maraki Security</h4><p>Security Guard Uniforms</p></div>
+                </div>
+            </div>
+
+            <!-- Private Companies -->
+            <div class="client-category">
+                <h3><i class="fa-solid fa-building"></i> Private Companies</h3>
+                <div class="client-grid">
+                    <div class="client-card"><i class="fa-solid fa-industry"></i><h4>Wunberg PLC</h4><p>Corporate Uniforms</p></div>
+                    <div class="client-card"><i class="fa-solid fa-industry"></i><h4>Omiyad PLC</h4><p>Corporate Uniforms</p></div>
+                    <div class="client-card"><i class="fa-solid fa-industry"></i><h4>Wazanen</h4><p>Corporate Uniforms</p></div>
+                </div>
+            </div>
+
+            <!-- Educational Institutions -->
+            <div class="client-category">
+                <h3><i class="fa-solid fa-graduation-cap"></i> Educational Institutions</h3>
+                <div class="client-grid">
+                    <div class="client-card"><i class="fa-solid fa-school"></i><h4>Bole Kale Hiwot School</h4><p>School Uniforms</p></div>
+                    <div class="client-card"><i class="fa-solid fa-school"></i><h4>Future Talent School</h4><p>School Uniforms</p></div>
+                    <div class="client-card"><i class="fa-solid fa-school"></i><h4>Bright Future School</h4><p>School Uniforms</p></div>
+                    <div class="client-card"><i class="fa-solid fa-school"></i><h4>KB Academy</h4><p>School Uniforms</p></div>
+                    <div class="client-card"><i class="fa-solid fa-school"></i><h4>MAFED Academy</h4><p>School Uniforms</p></div>
+                    <div class="client-card"><i class="fa-solid fa-school"></i><h4>School of Tomorrow</h4><p>School Uniforms</p></div>
+                    <div class="client-card"><i class="fa-solid fa-school"></i><h4>Aygoda School</h4><p>School Uniforms</p></div>
+                    <div class="client-card"><i class="fa-solid fa-school"></i><h4>Mekerz School</h4><p>School Uniforms</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="why-section section-padding">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Advantages</span>
+                <h2>Why Choose <span>Hailu Garment?</span></h2>
+            </div>
+            <div class="why-grid">
+                <div class="why-card"><div class="why-icon"><i class="fa-solid fa-award"></i></div><div><h4>10+ Years Experience</h4><p>Over a decade of garment manufacturing expertise in Ethiopia.</p></div></div>
+                <div class="why-card"><div class="why-icon"><i class="fa-solid fa-industry"></i></div><div><h4>Modern Workshop</h4><p>Equipped with 35 industrial sewing machines for efficient production.</p></div></div>
+                <div class="why-card"><div class="why-icon"><i class="fa-solid fa-users-gear"></i></div><div><h4>Skilled Workforce</h4><p>Experienced tailors, cutters, quality controllers, and supervisors.</p></div></div>
+                <div class="why-card"><div class="why-icon"><i class="fa-solid fa-pen-ruler"></i></div><div><h4>Custom Manufacturing</h4><p>Tailored solutions for institutions and businesses of all sizes.</p></div></div>
+                <div class="why-card"><div class="why-icon"><i class="fa-solid fa-circle-check"></i></div><div><h4>Consistent Quality</h4><p>Every product is supported by strict quality control procedures.</p></div></div>
+                <div class="why-card"><div class="why-icon"><i class="fa-solid fa-tags"></i></div><div><h4>Competitive Pricing</h4><p>Cost-effective production without compromising on quality.</p></div></div>
+                <div class="why-card"><div class="why-icon"><i class="fa-solid fa-clock"></i></div><div><h4>On-Time Delivery</h4><p>Reliable production planning and timely order fulfillment.</p></div></div>
+                <div class="why-card"><div class="why-icon"><i class="fa-solid fa-handshake-angle"></i></div><div><h4>Proven Experience</h4><p>Serving hospitals, schools, security firms, and private enterprises.</p></div></div>
+                <div class="why-card"><div class="why-icon"><i class="fa-solid fa-store"></i></div><div><h4>Integrated Operations</h4><p>Combined manufacturing and retail for efficient customer service.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATIONS SECTION -->
     <section class="locations-section" id="contact">
         <div class="container">
             <div class="section-header">
-                <h2>Visit Our <span>Retail Shops</span></h2>
-                <p>Experience the quality firsthand at our two convenient locations in Addis Ababa.</p>
+                <span class="section-tag">Find Us</span>
+                <h2>Our <span>Locations</span></h2>
+                <p>Manufacturing Workshop, Main Branch, and Retail Branch — all in Addis Ababa.</p>
             </div>
 
             <div class="location-grid">
                 
-                <!-- Bole Michael Card (With Map) -->
+                <!-- Manufacturing Workshop -->
+                <div class="location-card">
+                    <div class="location-header">
+                        <div class="location-icon-small"><i class="fa-solid fa-industry"></i></div>
+                        <h3>Manufacturing Workshop</h3>
+                    </div>
+                    <div class="location-info">
+                        <p><i class="fa-solid fa-location-dot" style="color:var(--primary); margin-right:5px;"></i> Primary Production Facility</p>
+                        <p><i class="fa-solid fa-map-pin" style="color:var(--primary); margin-right:5px;"></i> Bulbula Mariam Area</p>
+                        <p><i class="fa-solid fa-city" style="color:var(--primary); margin-right:5px;"></i> Addis Ababa, Ethiopia</p>
+                        <p style="margin-top: 10px; font-size: 0.85rem;">All garment manufacturing activities including cutting, sewing, finishing, and quality inspection.</p>
+                    </div>
+                    <a href="https://www.google.com/maps/search/Bulbula+Mariam+Addis+Ababa" target="_blank" class="contact-link">View on Google Maps <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Bole Michael Branch (With Map) -->
                 <div class="location-card">
                     <div class="location-header">
                         <div class="location-icon-small"><i class="fa-solid fa-store"></i></div>
-                        <h3>Bole Michael Branch</h3>
+                        <h3>Bole Michael (Main)</h3>
                     </div>
                     <div class="location-info">
-                        <p><i class="fa-solid fa-location-dot" style="color:var(--primary); margin-right:5px;"></i> Main Retail Shop</p>
-                        <p><i class="fa-solid fa-map-pin" style="color:var(--primary); margin-right:5px;"></i> Near Bole Michael Square</p>
+                        <p><i class="fa-solid fa-location-dot" style="color:var(--primary); margin-right:5px;"></i> HQ & Main Customer Service</p>
+                        <p><i class="fa-solid fa-map-pin" style="color:var(--primary); margin-right:5px;"></i> Bole Michael Square</p>
                         <p><i class="fa-solid fa-city" style="color:var(--primary); margin-right:5px;"></i> Addis Ababa, Ethiopia</p>
                     </div>
-                    <!-- Map Container for Bole Michael -->
                     <div id="map-bole" class="location-map-container"></div>
                     <a href="https://www.google.com/maps/dir/?api=1&destination=8.9936,38.7860" target="_blank" class="contact-link">Get Directions <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
 
-                <!-- 93 Mazoria Card (With Map) -->
+                <!-- 93 Mazoria Branch (With Map) -->
                 <div class="location-card">
                     <div class="location-header">
                         <div class="location-icon-small"><i class="fa-solid fa-store"></i></div>
-                        <h3>93 Mazoria Branch</h3>
+                        <h3>93 Mazoria (Retail)</h3>
                     </div>
                     <div class="location-info">
-                        <p><i class="fa-solid fa-location-dot" style="color:var(--primary); margin-right:5px;"></i> Second Retail Shop</p>
+                        <p><i class="fa-solid fa-location-dot" style="color:var(--primary); margin-right:5px;"></i> Retail Outlet & After-Sales</p>
                         <p><i class="fa-solid fa-map-pin" style="color:var(--primary); margin-right:5px;"></i> 93 Mazoria Area</p>
                         <p><i class="fa-solid fa-city" style="color:var(--primary); margin-right:5px;"></i> Addis Ababa, Ethiopia</p>
                     </div>
-                    <!-- Map Container for 93 Mazoria -->
                     <div id="map-mazoria" class="location-map-container"></div>
                     <a href="https://www.google.com/maps/dir/?api=1&destination=9.0192,38.7526" target="_blank" class="contact-link">Get Directions <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-
-                <!-- Corporate Orders Card (No Map, Phone Only) -->
-                <div class="location-card">
-                    <div class="location-header">
-                        <div class="location-icon-small"><i class="fa-solid fa-headset"></i></div>
-                        <h3>Corporate Orders</h3>
-                    </div>
-                    <div class="location-info">
-                        <p style="margin-bottom: 20px;">For bulk school and industrial orders, contact our main office directly.</p>
-                        <p><i class="fa-solid fa-phone" style="color:var(--accent); margin-right:5px;"></i> +251 948 889 999</p>
-                        <p><i class="fa-solid fa-phone" style="color:var(--accent); margin-right:5px;"></i> +251 994 683 868</p>
-                    </div>
-                    <a href="tel:+251948889999" class="contact-link" style="margin-top: auto;">Call Corporate Office <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
 
             </div>
@@ -844,8 +916,35 @@
     <!-- FOOTER -->
     <footer>
         <div class="container">
-            <div class="footer-logo">HAILU<span>GARMENT</span></div>
-            <p>&copy; 2023 Hailu Garment PLC. All rights reserved. | Premium Uniform Manufacturer in Addis Ababa.</p>
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="footer-logo">HAILU<span>GARMENT</span></a>
+                    <p>Ethiopian Excellence in Garment Manufacturing. Trusted by leading institutions for over 10 years.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <a href="#about">About Us</a>
+                    <a href="#uniforms">Our Products</a>
+                    <a href="#clients">Clients</a>
+                    <a href="#contact">Locations</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Our Products</h4>
+                    <a href="#uniforms">School Uniforms</a>
+                    <a href="#uniforms">Hospital Uniforms</a>
+                    <a href="#uniforms">Security Uniforms</a>
+                    <a href="#uniforms">Corporate Uniforms</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <a href="tel:+251948889999"><i class="fa-solid fa-phone" style="margin-right:8px;"></i>+251 948 889 999</a>
+                    <a href="tel:+251994683868"><i class="fa-solid fa-phone" style="margin-right:8px;"></i>+251 994 683 868</a>
+                    <a href="#contact"><i class="fa-solid fa-location-dot" style="margin-right:8px;"></i>Bole Michael, Addis Ababa</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hailu Garment PLC. All rights reserved. | Premium Uniform Manufacturer in Addis Ababa, Ethiopia.</p>
+            </div>
         </div>
     </footer>
 
@@ -853,44 +952,30 @@
     <div class="modal-overlay" id="productModal">
         <div class="modal-content">
             <button class="modal-close" id="closeModal"><i class="fa-solid fa-xmark"></i></button>
-            
             <div class="modal-left">
-                <div class="main-image">
-                    <img src="" alt="Product Image" id="modalMainImg">
-                </div>
+                <div class="main-image"><img src="" alt="Product Image" id="modalMainImg"></div>
                 <div class="thumbnail-container">
                     <div class="thumb active" data-img=""><img src="" alt="Thumb 1" id="thumb1"></div>
                     <div class="thumb" data-img=""><img src="" alt="Thumb 2" id="thumb2"></div>
                     <div class="thumb" data-img=""><img src="" alt="Thumb 3" id="thumb3"></div>
                 </div>
             </div>
-
             <div class="modal-right">
                 <span class="modal-category" id="modalCategory">School Uniform</span>
                 <h2 class="modal-title" id="modalTitle">Product Title</h2>
                 <p class="modal-desc" id="modalDesc">Product description goes here.</p>
-
                 <div class="selector-group">
                     <span class="selector-label">Available Colors</span>
                     <div class="color-options" id="colorOptions"></div>
                 </div>
-
                 <div class="selector-group">
                     <span class="selector-label">Select Size</span>
                     <div class="size-options" id="sizeOptions"></div>
                 </div>
-
-                <!-- NEW ACTION BUTTONS WITH BACK -->
                 <div class="modal-actions">
-                    <button class="btn-back" id="backBtn">
-                        <i class="fa-solid fa-arrow-left"></i> Back
-                    </button>
-                    <button class="btn-share" id="shareBtn" title="Share this product">
-                        <i class="fa-solid fa-share-nodes"></i>
-                    </button>
-                    <button class="btn-order" id="orderBtn">
-                        <i class="fa-solid fa-phone"></i> Call to Order
-                    </button>
+                    <button class="btn-back" id="backBtn"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                    <button class="btn-share" id="shareBtn" title="Share this product"><i class="fa-solid fa-share-nodes"></i></button>
+                    <button class="btn-order" id="orderBtn"><i class="fa-solid fa-phone"></i> Call to Order</button>
                 </div>
             </div>
         </div>
@@ -904,14 +989,12 @@
         // --- CUSTOM CURSOR ---
         const cursorDot = document.querySelector('.cursor-dot');
         const cursorOutline = document.querySelector('.cursor-outline');
-        const links = document.querySelectorAll('a, button, .product-card, .color-swatch, .size-btn, .kid-card, .ai-chatbot-btn');
+        const links = document.querySelectorAll('a, button, .product-card, .color-swatch, .size-btn, .kid-card, .ai-chatbot-btn, .client-card, .why-card, .value-card');
 
         window.addEventListener('mousemove', (e) => {
-            const posX = e.clientX;
-            const posY = e.clientY;
-            cursorDot.style.left = `${posX}px`;
-            cursorDot.style.top = `${posY}px`;
-            cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
+            cursorDot.style.left = `${e.clientX}px`;
+            cursorDot.style.top = `${e.clientY}px`;
+            cursorOutline.animate({ left: `${e.clientX}px`, top: `${e.clientY}px` }, { duration: 500, fill: "forwards" });
         });
 
         links.forEach(link => {
@@ -926,56 +1009,42 @@
             else header.classList.remove('scrolled');
         });
 
-        // --- 3D CARD STACK INTERACTION ---
+        // --- 3D CARD STACK ---
         const heroVisual = document.getElementById('heroVisual');
         const cardStack = document.getElementById('cardStack');
-
         if(heroVisual && cardStack) {
             heroVisual.addEventListener('mousemove', (e) => {
                 const rect = heroVisual.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = ((y - centerY) / centerY) * -15;
-                const rotateY = ((x - centerX) / centerX) * 15;
-
+                const rotateX = ((y - rect.height/2) / (rect.height/2)) * -15;
+                const rotateY = ((x - rect.width/2) / (rect.width/2)) * 15;
                 cardStack.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
             });
-
-            heroVisual.addEventListener('mouseleave', () => {
-                cardStack.style.transform = `rotateX(0deg) rotateY(0deg)`;
-            });
+            heroVisual.addEventListener('mouseleave', () => { cardStack.style.transform = `rotateX(0deg) rotateY(0deg)`; });
         }
 
         // --- PRODUCT FILTER ---
         const filterBtns = document.querySelectorAll('.filter-btn');
         const productCards = document.querySelectorAll('.product-card');
-
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 filterBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 const filterValue = btn.getAttribute('data-filter');
-
                 productCards.forEach(card => {
                     if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
                         card.style.display = 'block';
                         card.style.animation = 'none';
                         card.offsetHeight; 
                         card.style.animation = 'fadeInUp 0.6s forwards';
-                    } else {
-                        card.style.display = 'none';
-                    }
+                    } else { card.style.display = 'none'; }
                 });
             });
         });
 
         // --- MODAL LOGIC ---
         const modal = document.getElementById('productModal');
-        const closeModal = document.getElementById('closeModal');
         const modalMainImg = document.getElementById('modalMainImg');
         const modalTitle = document.getElementById('modalTitle');
         const modalDesc = document.getElementById('modalDesc');
@@ -989,69 +1058,56 @@
         const orderBtn = document.getElementById('orderBtn');
         const shareBtn = document.getElementById('shareBtn');
         const backBtn = document.getElementById('backBtn');
+        const closeModal = document.getElementById('closeModal');
 
         productCards.forEach(card => {
             card.addEventListener('click', () => {
-                const title = card.getAttribute('data-title');
-                const desc = card.getAttribute('data-desc');
-                const category = card.getAttribute('data-category') === 'school' ? 'School Uniform' : 'Industrial Uniform';
+                modalTitle.textContent = card.getAttribute('data-title');
+                modalDesc.textContent = card.getAttribute('data-desc');
+                modalCategory.textContent = card.getAttribute('data-category') === 'school' ? 'School Uniform' : 'Industrial Uniform';
                 const colors = card.getAttribute('data-colors').split(',');
                 const sizes = card.getAttribute('data-sizes').split(',');
                 const img1 = card.getAttribute('data-img1');
                 const img2 = card.getAttribute('data-img2');
                 const img3 = card.getAttribute('data-img3');
-
-                modalTitle.textContent = title;
-                modalDesc.textContent = desc;
-                modalCategory.textContent = category;
                 modalMainImg.src = img1;
-                thumb1.src = img1;
-                thumb2.src = img2;
-                thumb3.src = img3;
-
+                thumb1.src = img1; thumb2.src = img2; thumb3.src = img3;
                 thumbs.forEach(t => t.classList.remove('active'));
                 thumbs[0].classList.add('active');
-
                 colorOptions.innerHTML = '';
-                colors.forEach((color, index) => {
-                    const swatch = document.createElement('div');
-                    swatch.classList.add('color-swatch');
-                    if(index === 0) swatch.classList.add('active');
-                    swatch.style.backgroundColor = color;
-                    swatch.addEventListener('click', () => {
+                colors.forEach((color, i) => {
+                    const sw = document.createElement('div');
+                    sw.classList.add('color-swatch');
+                    if(i === 0) sw.classList.add('active');
+                    sw.style.backgroundColor = color;
+                    sw.addEventListener('click', () => {
                         document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
-                        swatch.classList.add('active');
+                        sw.classList.add('active');
                     });
-                    colorOptions.appendChild(swatch);
+                    colorOptions.appendChild(sw);
                 });
-
                 sizeOptions.innerHTML = '';
-                sizes.forEach((size, index) => {
-                    const btn = document.createElement('button');
-                    btn.classList.add('size-btn');
-                    if(index === 0) btn.classList.add('active');
-                    btn.textContent = size;
-                    btn.addEventListener('click', () => {
+                sizes.forEach((size, i) => {
+                    const b = document.createElement('button');
+                    b.classList.add('size-btn');
+                    if(i === 0) b.classList.add('active');
+                    b.textContent = size;
+                    b.addEventListener('click', () => {
                         document.querySelectorAll('.size-btn').forEach(s => s.classList.remove('active'));
-                        btn.classList.add('active');
+                        b.classList.add('active');
                     });
-                    sizeOptions.appendChild(btn);
+                    sizeOptions.appendChild(b);
                 });
-
                 modal.classList.add('active');
             });
         });
 
         closeModal.addEventListener('click', () => modal.classList.remove('active'));
-        
-        // --- BACK BUTTON LOGIC (NEW) ---
         backBtn.addEventListener('click', () => {
             modal.classList.remove('active');
             document.getElementById('uniforms').scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
-
         modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('active'); });
-
         thumbs.forEach(thumb => {
             thumb.addEventListener('click', () => {
                 thumbs.forEach(t => t.classList.remove('active'));
@@ -1059,32 +1115,21 @@
                 modalMainImg.src = thumb.querySelector('img').src;
             });
         });
-
         orderBtn.addEventListener('click', () => { window.location.href = "tel:+251948889999"; });
-
         shareBtn.addEventListener('click', async () => {
-            const shareData = {
-                title: modalTitle.textContent,
-                text: `Check out this ${modalTitle.textContent} from Hailu Garment!`,
-                url: window.location.href
-            };
-            try {
-                if (navigator.share) { await navigator.share(shareData); } 
-                else { await navigator.clipboard.writeText(window.location.href); alert("Link copied to clipboard!"); }
-            } catch (err) { console.log('Error sharing:', err); }
+            const shareData = { title: modalTitle.textContent, text: `Check out this ${modalTitle.textContent} from Hailu Garment!`, url: window.location.href };
+            try { if (navigator.share) { await navigator.share(shareData); } else { await navigator.clipboard.writeText(window.location.href); alert("Link copied!"); } } catch (err) {}
         });
 
-        // --- AI CHATBOT LOGIC ---
+        // --- AI CHATBOT ---
         const aiChatBtn = document.getElementById('aiChatBtn');
         const aiChatWindow = document.getElementById('aiChatWindow');
         const closeChat = document.getElementById('closeChat');
         const aiChatBody = document.getElementById('aiChatBody');
         const aiChatInput = document.getElementById('aiChatInput');
         const aiSendBtn = document.getElementById('aiSendBtn');
-
-        aiChatBtn.addEventListener('click', () => { aiChatWindow.classList.toggle('active'); });
-        closeChat.addEventListener('click', () => { aiChatWindow.classList.remove('active'); });
-
+        aiChatBtn.addEventListener('click', () => aiChatWindow.classList.toggle('active'));
+        closeChat.addEventListener('click', () => aiChatWindow.classList.remove('active'));
         function addMessage(message, sender) {
             const msgDiv = document.createElement('div');
             msgDiv.classList.add('ai-message');
@@ -1093,36 +1138,23 @@
             aiChatBody.appendChild(msgDiv);
             aiChatBody.scrollTop = aiChatBody.scrollHeight;
         }
-
         function getAIResponse(input) {
-            const lowerInput = input.toLowerCase();
-            if (lowerInput.includes('price') || lowerInput.includes('cost')) {
-                return "Pricing depends on the quantity and fabric type. Please call our sales team at +251 948 889 999 for a detailed quote.";
-            } else if (lowerInput.includes('size') || lowerInput.includes('fit')) {
-                return "We offer sizes from XS to XXL. You can view specific sizes on each product card. For custom sizing, please contact us directly.";
-            } else if (lowerInput.includes('order') || lowerInput.includes('buy')) {
-                return "To place an order, simply click the 'Call to Order' button on any product, or visit one of our shops at Bole Michael or 93 Mazoria.";
-            } else if (lowerInput.includes('school') || lowerInput.includes('uniform')) {
-                return "We supply uniforms to many schools including Kale Hiwot, School of Igoda, and Ethio Shipping Academy. Check out our collection section!";
-            } else if (lowerInput.includes('location') || lowerInput.includes('shop')) {
-                return "We have two retail shops: Bole Michael Branch and 93 Mazoria Branch. You can find our contact numbers and a map in the 'Locations' section.";
-            } else {
-                return "Thank you for your message. For immediate assistance, please call +251 948 889 999. You can also browse our product collection above.";
-            }
+            const lower = input.toLowerCase();
+            if (lower.includes('price') || lower.includes('cost')) return "Pricing depends on quantity and fabric. Please call +251 948 889 999 for a quote.";
+            if (lower.includes('size')) return "We offer sizes from XS to XXL. Custom sizing available.";
+            if (lower.includes('order')) return "Click 'Call to Order' on any product or visit our Bole Michael or 93 Mazoria shops.";
+            if (lower.includes('school')) return "We serve Kale Hiwot, Aygoda, Future Talent, Bright Future, KB Academy, MAFED, School of Tomorrow, and Mekerz.";
+            if (lower.includes('location') || lower.includes('shop')) return "We have 3 locations: Bulbula Mariam (workshop), Bole Michael (main), and 93 Mazoria (retail).";
+            if (lower.includes('experience') || lower.includes('year')) return "Hailu Garment has over 10 years of manufacturing experience.";
+            return "Thank you! For immediate assistance, call +251 948 889 999.";
         }
-
         function sendMessage() {
             const text = aiChatInput.value.trim();
             if (text === '') return;
             addMessage(text, 'user');
             aiChatInput.value = '';
-            
-            setTimeout(() => {
-                const response = getAIResponse(text);
-                addMessage(response, 'ai');
-            }, 800);
+            setTimeout(() => addMessage(getAIResponse(text), 'ai'), 800);
         }
-
         aiSendBtn.addEventListener('click', sendMessage);
         aiChatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
 
@@ -1135,32 +1167,23 @@
             });
         });
 
-        // --- INTERACTIVE MAPS INSIDE CARDS (LEAFLET.JS) ---
+        // --- INTERACTIVE MAPS ---
         document.addEventListener('DOMContentLoaded', function() {
             const boleMichaelCoords = [8.9936, 38.7860]; 
             const mazoria93Coords = [9.0192, 38.7526];
-
-            const darkTileLayer = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
-            const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
-
+            const darkTile = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+            const attribution = '&copy; OpenStreetMap contributors &copy; CARTO';
             const goldIcon = L.divIcon({
                 className: 'custom-div-icon',
                 html: "<div style='background-color:#D4AF37; width:15px; height:15px; border-radius:50%; border:3px solid #fff; box-shadow: 0 0 10px #D4AF37;'></div>",
-                iconSize: [21, 21],
-                iconAnchor: [10, 10]
+                iconSize: [21, 21], iconAnchor: [10, 10]
             });
-
-            // --- MAP 1: BOLE MICHAEL ---
             const mapBole = L.map('map-bole', { zoomControl: false, scrollWheelZoom: false }).setView(boleMichaelCoords, 15);
-            L.tileLayer(darkTileLayer, { attribution: attribution, subdomains: 'abcd', maxZoom: 19 }).addTo(mapBole);
-            L.marker(boleMichaelCoords, {icon: goldIcon}).addTo(mapBole)
-                .bindPopup(`<b>Bole Michael Branch</b><br>Main Retail Shop<br><a href="https://www.google.com/maps/dir/?api=1&destination=8.9936,38.7860" target="_blank" style="color:#1E88E5; font-weight:bold;">Get Directions</a>`);
-
-            // --- MAP 2: 93 MAZORIA ---
+            L.tileLayer(darkTile, { attribution: attribution, subdomains: 'abcd', maxZoom: 19 }).addTo(mapBole);
+            L.marker(boleMichaelCoords, {icon: goldIcon}).addTo(mapBole).bindPopup(`<b>Bole Michael Branch</b><br>Main Branch<br><a href="https://www.google.com/maps/dir/?api=1&destination=8.9936,38.7860" target="_blank" style="color:#1E88E5; font-weight:bold;">Get Directions</a>`);
             const mapMazoria = L.map('map-mazoria', { zoomControl: false, scrollWheelZoom: false }).setView(mazoria93Coords, 15);
-            L.tileLayer(darkTileLayer, { attribution: attribution, subdomains: 'abcd', maxZoom: 19 }).addTo(mapMazoria);
-            L.marker(mazoria93Coords, {icon: goldIcon}).addTo(mapMazoria)
-                .bindPopup(`<b>93 Mazoria Branch</b><br>Second Retail Shop<br><a href="https://www.google.com/maps/dir/?api=1&destination=9.0192,38.7526" target="_blank" style="color:#1E88E5; font-weight:bold;">Get Directions</a>`);
+            L.tileLayer(darkTile, { attribution: attribution, subdomains: 'abcd', maxZoom: 19 }).addTo(mapMazoria);
+            L.marker(mazoria93Coords, {icon: goldIcon}).addTo(mapMazoria).bindPopup(`<b>93 Mazoria Branch</b><br>Retail Outlet<br><a href="https://www.google.com/maps/dir/?api=1&destination=9.0192,38.7526" target="_blank" style="color:#1E88E5; font-weight:bold;">Get Directions</a>`);
         });
     </script>
 </body>
