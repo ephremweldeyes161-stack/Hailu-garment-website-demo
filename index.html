@@ -207,51 +207,57 @@
         .btn-order { flex: 1; background: var(--primary); color: white; border: none; border-radius: 50px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1rem; cursor: pointer; transition: var(--transition-smooth); display: flex; align-items: center; justify-content: center; gap: 10px; }
         .btn-order:hover { background: #1565C0; box-shadow: 0 0 20px rgba(30, 136, 229, 0.5); }
 
-        /* --- LOCATIONS SECTION (WITH MAP) --- */
+        /* --- LOCATIONS SECTION (CARDS WITH MAPS) --- */
         .locations-section { background: linear-gradient(to bottom, var(--bg-dark), #061829); padding: 100px 0; }
-        .location-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 50px; }
-        .location-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 40px; transition: var(--transition-smooth); position: relative; overflow: hidden; }
-        .location-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--primary), var(--accent)); transform: scaleX(0); transform-origin: left; transition: var(--transition-smooth); }
-        .location-card:hover::before { transform: scaleX(1); }
-        .location-card:hover { background: rgba(255,255,255,0.05); transform: translateY(-5px); }
-        .location-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
-        .location-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: white; }
-        .location-card p { color: var(--text-muted); margin-bottom: 20px; }
-        .contact-link { color: var(--accent); font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: var(--transition-smooth); }
+        .location-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        
+        .location-card { 
+            background: rgba(255,255,255,0.02); 
+            border: 1px solid rgba(255,255,255,0.05); 
+            border-radius: 20px; 
+            padding: 30px; 
+            transition: var(--transition-smooth); 
+            position: relative; 
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .location-card:hover { background: rgba(255,255,255,0.05); transform: translateY(-5px); border-color: rgba(30, 136, 229, 0.3); }
+        
+        .location-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .location-icon-small {
+            width: 50px; height: 50px;
+            background: rgba(30, 136, 229, 0.1);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; color: var(--primary);
+        }
+        .location-header h3 { font-size: 1.3rem; color: white; margin: 0; }
+        
+        .location-info { margin-bottom: 20px; }
+        .location-info p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 5px; }
+        
+        .location-map-container {
+            width: 100%;
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            z-index: 1; /* Ensure map stays below modal */
+        }
+
+        .contact-link { color: var(--accent); font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: var(--transition-smooth); font-size: 0.9rem; margin-top: auto; }
         .contact-link:hover { gap: 12px; }
 
-        /* Map Container */
-        #map-container {
-            width: 100%;
-            height: 400px;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.1);
-            margin-top: 40px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-
-        .leaflet-popup-content-wrapper {
-            background: var(--bg-card);
-            color: white;
-            border-radius: 10px;
-        }
-        .leaflet-popup-tip {
-            background: var(--bg-card);
-        }
-        .leaflet-popup-content b {
-            color: var(--accent);
-        }
-        .map-btn {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 8px 15px;
-            background: var(--primary);
-            color: white;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
+        .leaflet-popup-content-wrapper { background: var(--bg-card); color: white; border-radius: 10px; }
+        .leaflet-popup-tip { background: var(--bg-card); }
+        .leaflet-popup-content b { color: var(--accent); }
 
         /* --- FOOTER --- */
         footer { background: #040F1A; padding: 50px 0 30px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; }
@@ -283,7 +289,7 @@
             .filter-container { flex-wrap: wrap; }
             .cursor-dot, .cursor-outline { display: none; }
             * { cursor: auto; }
-            #map-container { height: 300px; }
+            .location-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -709,7 +715,7 @@
         </div>
     </section>
 
-    <!-- LOCATIONS SECTION (WITH MAP) -->
+    <!-- LOCATIONS SECTION (MAPS INSIDE CARDS) -->
     <section class="locations-section" id="contact">
         <div class="container">
             <div class="section-header">
@@ -718,28 +724,54 @@
             </div>
 
             <div class="location-grid">
+                
+                <!-- Bole Michael Card (With Map) -->
                 <div class="location-card">
-                    <div class="location-icon"><i class="fa-solid fa-store"></i></div>
-                    <h3>Bole Michael Branch</h3>
-                    <p>Main Retail Shop<br>Near Bole Michael Square<br>Addis Ababa, Ethiopia</p>
+                    <div class="location-header">
+                        <div class="location-icon-small"><i class="fa-solid fa-store"></i></div>
+                        <h3>Bole Michael Branch</h3>
+                    </div>
+                    <div class="location-info">
+                        <p><i class="fa-solid fa-location-dot" style="color:var(--primary); margin-right:5px;"></i> Main Retail Shop</p>
+                        <p><i class="fa-solid fa-map-pin" style="color:var(--primary); margin-right:5px;"></i> Near Bole Michael Square</p>
+                        <p><i class="fa-solid fa-city" style="color:var(--primary); margin-right:5px;"></i> Addis Ababa, Ethiopia</p>
+                    </div>
+                    <!-- Map Container for Bole Michael -->
+                    <div id="map-bole" class="location-map-container"></div>
                     <a href="https://www.google.com/maps/dir/?api=1&destination=8.9936,38.7860" target="_blank" class="contact-link">Get Directions <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
+
+                <!-- 93 Mazoria Card (With Map) -->
                 <div class="location-card">
-                    <div class="location-icon"><i class="fa-solid fa-store"></i></div>
-                    <h3>93 Mazoria Branch</h3>
-                    <p>Second Retail Shop<br>93 Mazoria Area<br>Addis Ababa, Ethiopia</p>
+                    <div class="location-header">
+                        <div class="location-icon-small"><i class="fa-solid fa-store"></i></div>
+                        <h3>93 Mazoria Branch</h3>
+                    </div>
+                    <div class="location-info">
+                        <p><i class="fa-solid fa-location-dot" style="color:var(--primary); margin-right:5px;"></i> Second Retail Shop</p>
+                        <p><i class="fa-solid fa-map-pin" style="color:var(--primary); margin-right:5px;"></i> 93 Mazoria Area</p>
+                        <p><i class="fa-solid fa-city" style="color:var(--primary); margin-right:5px;"></i> Addis Ababa, Ethiopia</p>
+                    </div>
+                    <!-- Map Container for 93 Mazoria -->
+                    <div id="map-mazoria" class="location-map-container"></div>
                     <a href="https://www.google.com/maps/dir/?api=1&destination=9.0192,38.7526" target="_blank" class="contact-link">Get Directions <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
-                <div class="location-card">
-                    <div class="location-icon"><i class="fa-solid fa-headset"></i></div>
-                    <h3>Corporate Orders</h3>
-                    <p>For bulk school and industrial orders, contact our main office.</p>
-                    <a href="tel:+251948889999" class="contact-link">+251 948 889 999 <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-            </div>
 
-            <!-- INTERACTIVE MAP -->
-            <div id="map-container"></div>
+                <!-- Corporate Orders Card (No Map, Phone Only) -->
+                <div class="location-card">
+                    <div class="location-header">
+                        <div class="location-icon-small"><i class="fa-solid fa-headset"></i></div>
+                        <h3>Corporate Orders</h3>
+                    </div>
+                    <div class="location-info">
+                        <p style="margin-bottom: 20px;">For bulk school and industrial orders, contact our main office directly.</p>
+                        <p><i class="fa-solid fa-phone" style="color:var(--accent); margin-right:5px;"></i> +251 948 889 999</p>
+                        <p><i class="fa-solid fa-phone" style="color:var(--accent); margin-right:5px;"></i> +251 994 683 868</p>
+                    </div>
+                    <a href="tel:+251948889999" class="contact-link" style="margin-top: auto;">Call Corporate Office <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+            </div>
         </div>
     </section>
 
@@ -1025,21 +1057,15 @@
             });
         });
 
-        // --- INTERACTIVE MAP (LEAFLET.JS) ---
+        // --- INTERACTIVE MAPS INSIDE CARDS (LEAFLET.JS) ---
         document.addEventListener('DOMContentLoaded', function() {
-            // Coordinates for the two shops (Approximate for Addis Ababa)
-            const boleMichael = [8.9936, 38.7860]; 
-            const mazoria93 = [9.0192, 38.7526];
+            // Coordinates for the two shops
+            const boleMichaelCoords = [8.9936, 38.7860]; 
+            const mazoria93Coords = [9.0192, 38.7526];
 
-            // Initialize the map centered between the two points
-            const map = L.map('map-container').setView([9.0064, 38.7693], 13);
-
-            // Add a beautiful dark-themed tile layer
-            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-                subdomains: 'abcd',
-                maxZoom: 19
-            }).addTo(map);
+            // Common Tile Layer (Dark theme)
+            const darkTileLayer = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+            const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
 
             // Custom Gold Marker Icon
             const goldIcon = L.divIcon({
@@ -1049,29 +1075,35 @@
                 iconAnchor: [10, 10]
             });
 
-            // Add Marker for Bole Michael
-            L.marker(boleMichael, {icon: goldIcon}).addTo(map)
+            // --- MAP 1: BOLE MICHAEL ---
+            const mapBole = L.map('map-bole', {
+                zoomControl: false,
+                scrollWheelZoom: false // Prevents page scroll hijacking
+            }).setView(boleMichaelCoords, 15);
+
+            L.tileLayer(darkTileLayer, { attribution: attribution, subdomains: 'abcd', maxZoom: 19 }).addTo(mapBole);
+
+            L.marker(boleMichaelCoords, {icon: goldIcon}).addTo(mapBole)
                 .bindPopup(`
                     <b>Bole Michael Branch</b><br>
                     Main Retail Shop<br>
-                    <a href="https://www.google.com/maps/dir/?api=1&destination=8.9936,38.7860" target="_blank" class="map-btn">Get Directions</a>
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=8.9936,38.7860" target="_blank" style="color:#1E88E5; font-weight:bold;">Get Directions</a>
                 `);
 
-            // Add Marker for 93 Mazoria
-            L.marker(mazoria93, {icon: goldIcon}).addTo(map)
+            // --- MAP 2: 93 MAZORIA ---
+            const mapMazoria = L.map('map-mazoria', {
+                zoomControl: false,
+                scrollWheelZoom: false
+            }).setView(mazoria93Coords, 15);
+
+            L.tileLayer(darkTileLayer, { attribution: attribution, subdomains: 'abcd', maxZoom: 19 }).addTo(mapMazoria);
+
+            L.marker(mazoria93Coords, {icon: goldIcon}).addTo(mapMazoria)
                 .bindPopup(`
                     <b>93 Mazoria Branch</b><br>
                     Second Retail Shop<br>
-                    <a href="https://www.google.com/maps/dir/?api=1&destination=9.0192,38.7526" target="_blank" class="map-btn">Get Directions</a>
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=9.0192,38.7526" target="_blank" style="color:#1E88E5; font-weight:bold;">Get Directions</a>
                 `);
-
-            // Add a subtle circle around the area
-            L.circle([9.0064, 38.7693], {
-                color: '#1E88E5',
-                fillColor: '#1E88E5',
-                fillOpacity: 0.05,
-                radius: 2000
-            }).addTo(map);
         });
     </script>
 </body>
